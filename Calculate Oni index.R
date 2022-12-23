@@ -103,10 +103,6 @@ ta <- length(oni)%%12
 
 oni_fin <- data.frame(Fecha,Meses = c(rep(Meses,fal),Meses[1:ta]),oni)
 
-
-View(oni_fin)
-oni_fin$oni <- round(oni_fin$oni,2)
-
 oni_fin
 
 library(xlsx)
@@ -116,18 +112,6 @@ write.xlsx(
   col.names = T,
   row.names = F)
 
-library(rsoi)       #Librería para descarga de índices
-library(tidyverse)  #Manejo de datos
-
-#Descarga indice oni
-oni <- download_oni() 
-
-#Método 1 : Grafica de barras
-head(oni_fin)
-oni
-
-plot(oni$Date,oni$ONI,type="l",col="green")
-lines(oni_fin$Fecha,oni_fin$oni,type="l",col="orange",add=T)
 
 
 library(hrbrthemes)
